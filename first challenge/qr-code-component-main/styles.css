@@ -1,0 +1,18 @@
+body {
+    width: 375px;
+    background-color: lightblue;
+}
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+.qr_code_img {
+    width: 288px;
+    border-radius: 10px;
+}
+
+.container {
+    width: 320px;
+    background-color: white;
+   
+   
+}
