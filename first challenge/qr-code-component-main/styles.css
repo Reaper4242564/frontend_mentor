@@ -1,6 +1,6 @@
 body {
     width: 375px;
-    background-color: lightblue;
+    background-color: hsl(212, 45%, 89%);
 }
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
@@ -8,11 +8,36 @@ body {
 .qr_code_img {
     width: 288px;
     border-radius: 10px;
+    position: relative;
+    left: 16px;
+    right: 16px;
+    top: 16px;
 }
 
 .container {
     width: 320px;
+    height: 500px;
     background-color: white;
+    position: absolute;
+    border-radius: 10px;
    
    
+}
+
+.main_text, .sub_text {
+    position: relative;
+
+}
+
+.main_text {
+    top: 40px;
+}
+
+.sub_text {
+    top: 60px;
+}
+
+.attribution {
+    position: relative;
+    top: 100px;
 }
