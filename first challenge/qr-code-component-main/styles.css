@@ -26,18 +26,32 @@ body {
 
 .main_text, .sub_text {
     position: relative;
+    font-family: Outfit, sans-serif;
+
+    text-wrap: balance;
+    text-align: center;
 
 }
 
 .main_text {
     top: 40px;
+    font-size: large;
+    background-color: lightblue;
+    font-weight: 700;
+    
+    
 }
 
 .sub_text {
     top: 60px;
+    font-size: 15px;
+    background-color: lightgreen;
+    font-weight: 400;
+    width: 280px;
+    left: 20px;
 }
 
 .attribution {
     position: relative;
-    top: 100px;
+    top: 90px;
 }
