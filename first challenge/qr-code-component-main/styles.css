@@ -1,6 +1,7 @@
 body {
     width: 375px;
     background-color: hsl(212, 45%, 89%);
+    padding-bottom: 1000px;
 }
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
@@ -8,7 +9,7 @@ body {
 .qr_code_img {
     width: 288px;
     border-radius: 10px;
-    position: relative;
+    position: absolute;
     left: 16px;
     right: 16px;
     top: 16px;
@@ -18,14 +19,16 @@ body {
     width: 320px;
     height: 500px;
     background-color: white;
-    position: absolute;
+    position: relative;
     border-radius: 10px;
+    left: 200px;
+    top: 300px;
    
    
 }
 
 .main_text, .sub_text {
-    position: relative;
+    position: absolute;
     font-family: Outfit, sans-serif;
 
     text-wrap: balance;
@@ -34,24 +37,27 @@ body {
 }
 
 .main_text {
-    top: 40px;
+    top: 340px;
     font-size: large;
-    background-color: lightblue;
+
     font-weight: 700;
     
     
 }
 
 .sub_text {
-    top: 60px;
-    font-size: 15px;
-    background-color: lightgreen;
+    top: 409px;
+    font-size: 14px;
+ 
     font-weight: 400;
-    width: 280px;
-    left: 20px;
+    width: 250px;
+    left: 25px;
+    text-align: center;
+    
 }
 
 .attribution {
-    position: relative;
-    top: 90px;
+    position: absolute;
+    top: 475px;
+    left: 25px;
 }
