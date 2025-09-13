@@ -22,24 +22,45 @@ body {
     width: 375px;
     margin: 0 auto;
     padding: 0 15px;
-    position: relative;
     background-color: hsl(0, 0%, 100%);
     position: relative;
     top: 100px;
-    height: 400px;
+    height: 480px;
+    border-radius: 15px;
+    box-shadow: 10px 10px hsl(0, 0%, 7%);
+    border-style: solid;
+    border-color:hsl(0, 0%, 7%);
+    border-width: 1px;
 }
 
 .hidden {
     display: none;
 }
 
-.text-center {
-    text-align: center;
+.content{
     position: absolute;
-    top: 300px;
+    top: 240px;
+    
+}
+
+.illustration img {
+    border-radius: 10px;
+    
 }
 
 .illustration {
     position: absolute;
     top: 20px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: hsl(47, 88%, 63%);
+    padding: 0px 10px;
+}
+
+.avatar {
+    display: inline-block;
+    background-color: aqua;
+    align-items: center;
 }
