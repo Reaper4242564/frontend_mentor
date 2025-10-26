@@ -134,4 +134,82 @@ h1, h2, h3 {
     }
 }
 
+.visually-hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+
+    &.skip-link:focus {
+        left: 0;
+        width: auto;
+        height: auto;
+        background-color: var(--color-main-bg);
+        color: var(--color-text-light);
+        padding: 10px;
+        border: 2px solid var(--color-text-light);
+    }
+        
+}
+
+}
+
+@layer components {
+
+  .header {
+    .header_content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block-start: 16px;
+    }
+
+    .header_homelink {
+
+    }
+    .header_logo {
+      width: calc(137 / 16 * 1rem);
+
+      @media (width >= calc(700 / 16 * 1rem)) {
+          width: calc(197 / 16 * 1rem);
+      }
+    }
+    .header_dropdown {
+
+    }
+  }
+
+  .hero {
+    .hero_content {
+      display: grid;
+      padding-block-start: 48px;
+      justify-items: center;
+
+    
+    }
+
+    .hero_title {
+      font-size: var(--font-size-h1);
+      margin-block-end: 48px;
+      text-align: center;
+      line-height: 1.2;
+
+      @media (width >= calc(700 / 16 * 1rem)) {
+          max-width: 15ch;
+      }
+    }
+    .hero_search {
+
+    }
+    .hero_textbox {
+
+    }
+    .hero_button {
+
+    }
+
+  }
+
 }
