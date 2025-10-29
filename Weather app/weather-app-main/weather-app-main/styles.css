@@ -121,6 +121,12 @@ h1, h2, h3 {
     font-family: "Bricolage Grotesque", Arial, Helvetica, sans-serif;
 }
 
+input, button, textarea {
+  font: inherit;
+  width: 100%;
+  border: none;
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: 1fr calc(100% - 32px) 1fr;
@@ -187,7 +193,6 @@ h1, h2, h3 {
       padding-block-start: 48px;
       justify-items: center;
 
-    
     }
 
     .hero_title {
@@ -201,12 +206,37 @@ h1, h2, h3 {
       }
     }
     .hero_search {
-
+      display: grid;
+      gap: 12px 16px;
     }
     .hero_textbox {
+      background-color: var(--color-panel-bg-dark);
+      font-size: var(--font-size-search);
+      color: var(--color-text-med-light);
+      padding: 16px 20px 16px 60px;
+      border-radius: 12px;
+      background-image: url(./assets/images/icon-search.svg);
+      background-repeat: no-repeat;
+      background-position: 24px center;
+      
+
+      &:focus {
+        outline: 2px solid var(--color-text-med-light)
+      }
 
     }
     .hero_button {
+      background-color: var(--c-blue-500);
+      color: var(--color-text-light);
+      font-size: var(--font-size-search);
+      padding-block: 16px;
+      border-radius: 12px;
+
+      &:hover {
+        background-color: var(--color-button-bg-hover);
+        transition: background-color 120ms ease-in-out;
+        cursor: pointer;
+      }
 
     }
 
