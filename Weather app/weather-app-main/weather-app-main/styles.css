@@ -163,7 +163,16 @@
 
   .main {
     display: grid;
-    gap: 32px;
+    gap: 32px 0px;
+
+    @media (width >= calc(1000 / 16 * 1rem)) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: 
+        "hero hero hero"
+        "current current hourly"
+        "daily daily hourly";
+    }
+
   }
 
   .block {
@@ -200,6 +209,8 @@
   }
 
   .hero {
+    grid-area: hero;
+
     .hero_content {
       display: grid;
       padding-block-start: 48px;
@@ -255,6 +266,8 @@
   }
 
   .current {
+    grid-area: current;
+
     .current_weather {
       display: flex;
       flex-direction: column;
@@ -353,6 +366,8 @@
   }
 
   .daily {
+    grid-area: daily;
+
     .daily_title {
       font-size: var(--font-size-forecast-title);
       margin-block-end: 20px;
@@ -409,6 +424,8 @@
   }
 
   .hourly {
+    grid-area: hourly;
+
     .hourly_content {
       background-color: var(--color-panel-bg-dark);
       border-radius: 20px;
@@ -418,9 +435,14 @@
     .hourly_header {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      margin-block-end: 16px;
 
     }
     .hourly_title {
+      font-size: var(--font-size-forecast-title);
+      font-weight: 600;
+
 
     }
     .hourly_select {
@@ -430,19 +452,32 @@
 
     }
     .hourly_hours {
+      display: grid;
+      gap: 16px;
 
     }
     .hourly_hour {
-
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      gap: 8px;
+      align-items: center;
+      padding: 10px 16px 10px 12px;
+      background-color: var(--color-panel-bg-med);
+      border: 1px solid var(--color-panel-border);
+      border-radius: 8px;
     }
 
     .hourly_hour-icon {
+      width: 40px;
+      height: auto;
 
     }
     .hourly_hour-time {
-
+      font-size: var(--font-size-forecast-hour);
     }
     .hourly_hour-temp {
+      font-size: var(--font-size-forecast-temp);
+      justify-self: end;
 
     }
 
