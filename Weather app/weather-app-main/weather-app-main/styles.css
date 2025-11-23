@@ -166,6 +166,12 @@
     gap: 32px;
   }
 
+  .block {
+    background-color: var(--color-panel-bg-dark);
+    border: 1px solid var(--color-panel-border);
+    border-radius: 12px;
+  }
+
 }
 
 @layer components {
@@ -326,9 +332,7 @@
     }
 
     .current_condition {
-      background-color: var(--color-panel-bg-dark);
-      border: 1px solid var(--color-panel-border);
-      border-radius: 12px;
+
       padding: 20px;
 
     }
@@ -343,6 +347,102 @@
     .current_condition-value {
       font-size: var(--font-size-panel-value);
       font-weight: 300;
+
+    }
+
+  }
+
+  .daily {
+    .daily_title {
+      font-size: var(--font-size-forecast-title);
+      margin-block-end: 20px;
+      font-family: var(--f);
+
+    }
+    .daily_forecast {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+
+      @media (width >= calc(700 / 16 * 1rem)) {
+        grid-template-columns: repeat(7, 1fr);
+      }
+
+    }
+
+    .daily_day {
+      display: grid;
+      justify-items: center;
+      text-align: center;
+      gap: 16px;
+      padding: 16px 10px;
+
+    }
+    .daily_day-titile {
+      font-size: var(--font-size-forecast-day);
+      color: var(--color-text-med-light);
+
+    }
+
+    .daily_day-icon {
+      width: 60px;
+      height: auto;
+
+    }
+
+    .daily_day-temps {
+      justify-self: stretch;
+      font-size: var(--font-size-forecast-temp);
+      display: flex;
+      justify-content: space-between;
+      
+
+    }
+
+    .daily_day-high {
+      color: var(--color-text-light);
+
+    }
+    .daily_day-low {
+      color: var(--color-text-med-light);
+    }
+  }
+
+  .hourly {
+    .hourly_content {
+      background-color: var(--color-panel-bg-dark);
+      border-radius: 20px;
+      padding: 20px 16px;
+    }
+
+    .hourly_header {
+      display: flex;
+      justify-content: space-between;
+
+    }
+    .hourly_title {
+
+    }
+    .hourly_select {
+
+    }
+    .hourly_select-day {
+
+    }
+    .hourly_hours {
+
+    }
+    .hourly_hour {
+
+    }
+
+    .hourly_hour-icon {
+
+    }
+    .hourly_hour-time {
+
+    }
+    .hourly_hour-temp {
 
     }
 
