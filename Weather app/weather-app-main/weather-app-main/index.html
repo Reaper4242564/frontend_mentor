@@ -8,6 +8,7 @@
   
   <title>Frontend Mentor | Weather app</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="./script.js" defer></script>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
@@ -30,8 +31,8 @@
     
   </header>
 
-  <main id="main" class="main"> 
-    <section class="hero wrapper">
+  <main id="main" class="main wrapper"> 
+    <section class="hero ">
       <div class="hero_content">
         <h1 class="hero_title">How's the sky looking today?</h1>
 
@@ -42,8 +43,10 @@
       </div>
      
     </section>
-    
-    <section class="current wrapper">
+
+    <section class="dashboard">
+
+      <section class="current ">
       <h2 class="visually-hidden">Current Location weather</h2>
 
       <div class="current_weather">
@@ -77,125 +80,129 @@
           </div>
       </div>
 
-    </section>
+      </section>
 
-    <section class="wrapper daily">
-      <h2 class="section_title daily_title">Daily forecast</h2>
-      <div class="daily_forecast">
-        <div class=" block daily_day">
-          <p class="daily_day-title">Tue</p>
-          <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
-          <div class="daily_day-temps">
-            <p class="daily_day-high">20&deg;</p>
-            <p class="daily_low">14&deg;</p>
+      <section class=" daily">
+        <h2 class="section_title daily_title">Daily forecast</h2>
+        <div class="daily_forecast">
+          <div class=" block daily_day">
+            <p class="daily_day-title">Tue</p>
+            <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
+            <div class="daily_day-temps">
+              <p class="daily_day-high">20&deg;</p>
+              <p class="daily_low">14&deg;</p>
+            </div>
+          </div>
+          <div class=" block daily_day">
+            <p class="daily_day-title">Tue</p>
+            <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
+            <div class="daily_day-temps">
+              <p class="daily_day-high">20&deg;</p>
+              <p class="daily_low">14&deg;</p>
+            </div>
+          </div>
+          <div class=" block daily_day">
+            <p class="daily_day-title">Tue</p>
+            <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
+            <div class="daily_day-temps">
+              <p class="daily_day-high">20&deg;</p>
+              <p class="daily_low">14&deg;</p>
+            </div>
+          </div>
+          <div class=" block daily_day">
+            <p class="daily_day-title">Tue</p>
+            <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
+            <div class="daily_day-temps">
+              <p class="daily_day-high">20&deg;</p>
+              <p class="daily_low">14&deg;</p>
+            </div>
+          </div>
+          <div class=" block daily_day">
+            <p class="daily_day-title">Tue</p>
+            <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
+            <div class="daily_day-temps">
+              <p class="daily_day-high">20&deg;</p>
+              <p class="daily_low">14&deg;</p>
+            </div>
+          </div>
+          <div class=" block daily_day">
+            <p class="daily_day-title">Tue</p>
+            <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
+            <div class="daily_day-temps">
+              <p class="daily_day-high">20&deg;</p>
+              <p class="daily_low">14&deg;</p>
+            </div>
+          </div>
+          <div class=" block daily_day">
+            <p class="daily_day-title">Tue</p>
+            <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
+            <div class="daily_day-temps">
+              <p class="daily_day-high">20&deg;</p>
+              <p class="daily_low">14&deg;</p>
+            </div>
           </div>
         </div>
-        <div class=" block daily_day">
-          <p class="daily_day-title">Tue</p>
-          <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
-          <div class="daily_day-temps">
-            <p class="daily_day-high">20&deg;</p>
-            <p class="daily_low">14&deg;</p>
+      </section>
+      
+      <section class="hourly ">
+        <div class="hourly_content">
+          <div class="hourly_header">
+            <h2 class="section_title hourly_title">Hourly forecast</h2>
+            <select name="hourly_select" id="hourlyDay">
+              <option class="hourly_select-day" value="">Tuesday</option>
+            </select>
           </div>
-        </div>
-        <div class=" block daily_day">
-          <p class="daily_day-title">Tue</p>
-          <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
-          <div class="daily_day-temps">
-            <p class="daily_day-high">20&deg;</p>
-            <p class="daily_low">14&deg;</p>
-          </div>
-        </div>
-        <div class=" block daily_day">
-          <p class="daily_day-title">Tue</p>
-          <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
-          <div class="daily_day-temps">
-            <p class="daily_day-high">20&deg;</p>
-            <p class="daily_low">14&deg;</p>
-          </div>
-        </div>
-        <div class=" block daily_day">
-          <p class="daily_day-title">Tue</p>
-          <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
-          <div class="daily_day-temps">
-            <p class="daily_day-high">20&deg;</p>
-            <p class="daily_low">14&deg;</p>
-          </div>
-        </div>
-        <div class=" block daily_day">
-          <p class="daily_day-title">Tue</p>
-          <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
-          <div class="daily_day-temps">
-            <p class="daily_day-high">20&deg;</p>
-            <p class="daily_low">14&deg;</p>
-          </div>
-        </div>
-        <div class=" block daily_day">
-          <p class="daily_day-title">Tue</p>
-          <img class="daily_day-icon" src="./assets/images/icon-rain.webp" alt="" width="320px" height="320px">
-          <div class="daily_day-temps">
-            <p class="daily_day-high">20&deg;</p>
-            <p class="daily_low">14&deg;</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="hourly wrapper">
-      <div class="hourly_content">
-        <div class="hourly_header">
-          <h2 class="section_title hourly_title">Hourly forecast</h2>
-          <select name="hourly_select" id="hourlyDay">
-            <option class="hourly_select-day" value="">Tuesday</option>
-          </select>
-        </div>
 
-        <div class="hourly_hours">
-          <div class="hourly_hour">
-            <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
-            <p class="hourly_hour-time">3 PM</p>
-            <p class="hourly_hour-temp">20&deg;</p>
-          </div>
-          <div class="hourly_hour">
-            <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
-            <p class="hourly_hour-time">3 PM</p>
-            <p class="hourly_hour-temp">20&deg;</p>
-          </div>
-          <div class="hourly_hour">
-            <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
-            <p class="hourly_hour-time">3 PM</p>
-            <p class="hourly_hour-temp">20&deg;</p>
-          </div>
-          <div class="hourly_hour">
-            <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
-            <p class="hourly_hour-time">3 PM</p>
-            <p class="hourly_hour-temp">20&deg;</p>
-          </div>
-          <div class="hourly_hour">
-            <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
-            <p class="hourly_hour-time">3 PM</p>
-            <p class="hourly_hour-temp">20&deg;</p>
-          </div>
-          <div class="hourly_hour">
-            <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
-            <p class="hourly_hour-time">3 PM</p>
-            <p class="hourly_hour-temp">20&deg;</p>
-          </div>
-          <div class="hourly_hour">
-            <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
-            <p class="hourly_hour-time">3 PM</p>
-            <p class="hourly_hour-temp">20&deg;</p>
-          </div>
-          <div class="hourly_hour">
-            <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
-            <p class="hourly_hour-time">3 PM</p>
-            <p class="hourly_hour-temp">20&deg;</p>
+          <div class="hourly_hours">
+            <div class="hourly_hour">
+              <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
+              <p class="hourly_hour-time">3 PM</p>
+              <p class="hourly_hour-temp">20&deg;</p>
+            </div>
+            <div class="hourly_hour">
+              <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
+              <p class="hourly_hour-time">3 PM</p>
+              <p class="hourly_hour-temp">20&deg;</p>
+            </div>
+            <div class="hourly_hour">
+              <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
+              <p class="hourly_hour-time">3 PM</p>
+              <p class="hourly_hour-temp">20&deg;</p>
+            </div>
+            <div class="hourly_hour">
+              <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
+              <p class="hourly_hour-time">3 PM</p>
+              <p class="hourly_hour-temp">20&deg;</p>
+            </div>
+            <div class="hourly_hour">
+              <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
+              <p class="hourly_hour-time">3 PM</p>
+              <p class="hourly_hour-temp">20&deg;</p>
+            </div>
+            <div class="hourly_hour">
+              <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
+              <p class="hourly_hour-time">3 PM</p>
+              <p class="hourly_hour-temp">20&deg;</p>
+            </div>
+            <div class="hourly_hour">
+              <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
+              <p class="hourly_hour-time">3 PM</p>
+              <p class="hourly_hour-temp">20&deg;</p>
+            </div>
+            <div class="hourly_hour">
+              <img class="hourly_hour-icon" src="./assets/images/icon-overcast.webp" alt="" width="40" height="40">
+              <p class="hourly_hour-time">3 PM</p>
+              <p class="hourly_hour-temp">20&deg;</p>
+            </div>
           </div>
         </div>
-      </div>
 
       
+      </section>
+
     </section>
+
+
 
   </main>
 
@@ -243,9 +250,5 @@
   Hourly forecast
   Insert hourly forecast for the selected day here -->
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
 </body>
 </html>

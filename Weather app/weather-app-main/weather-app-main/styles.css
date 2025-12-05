@@ -117,6 +117,7 @@
       background-color: var(--color-main-bg);
       color: var(--color-text-light);
       line-height: 1.2;
+      padding-block-end: 80px;
   }
   h1, h2, h3 {
       font-family: "Bricolage Grotesque", Arial, Helvetica, sans-serif;
@@ -163,15 +164,28 @@
 
   .main {
     display: grid;
-    gap: 32px 0px;
+    row-gap: 32px;
+  
+  .dashboard {
+    display: grid;
+    grid-template-areas:
+      "current"
+      "daily"
+      "hourly";
+    gap: 32px;
 
     @media (width >= calc(1000 / 16 * 1rem)) {
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-areas: 
-        "hero hero hero"
         "current current hourly"
         "daily daily hourly";
+      gap: 48px 32px;
+
+    
     }
+  }  
+
 
   }
 
@@ -209,8 +223,6 @@
   }
 
   .hero {
-    grid-area: hero;
-
     .hero_content {
       display: grid;
       padding-block-start: 48px;
@@ -224,13 +236,19 @@
       text-align: center;
       line-height: 1.2;
 
-      @media (width >= calc(700 / 16 * 1rem)) {
+      @media (width < calc(1000 / 16 * 1rem)) {
           max-width: 15ch;
       }
     }
     .hero_search {
       display: grid;
       gap: 12px 16px;
+      width: 100%;
+      max-width: calc(656 / 16 * 1rem);
+
+      @media (width >= calc(700 / 16 * 1rem)) {
+        grid-template-columns: 1fr auto;
+      }
     }
     .hero_textbox {
       background-color: var(--color-panel-bg-dark);
@@ -252,7 +270,7 @@
       background-color: var(--c-blue-500);
       color: var(--color-text-light);
       font-size: var(--font-size-search);
-      padding-block: 16px;
+      padding: 16px 24px;
       border-radius: 12px;
 
       &:hover {
@@ -267,7 +285,7 @@
 
   .current {
     grid-area: current;
-
+    
     .current_weather {
       display: flex;
       flex-direction: column;
