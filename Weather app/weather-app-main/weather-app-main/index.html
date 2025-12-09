@@ -24,8 +24,10 @@
       <a href="/" class="header_homelink">
         <img class="header_logo" src="./assets/images/logo.svg" alt="weather now home" width="197" height="40"> 
       </a>
-      <select name="units" id="units" class="header_dropdown">
+      <select name="units" id="ddlUnits" class="header_dropdown">
         <option value="">Units</option>
+        <option value="C">Celsius</option>
+        <option value="F">Fahrenheit</option>
       </select>  
     </div>
     
@@ -51,12 +53,12 @@
 
       <div class="current_weather">
         <div class="current_location">
-          <div class="current_city">Berlin, Germany</div>
-          <div class="current_date">Tuesday, Aug 5, 2025</div>
+          <div id="dvCityCountry" class="current_city">Berlin, Germany</div>
+          <div id="dvCurrDate" class="current_date">Tuesday, Aug 5, 2025</div>
         </div>
         <div class="current_info">
           <img class="current_icon" src="./assets/images/icon-sunny.webp" alt="" width="320" height="320">
-          <div class="current_temp"><span>20</span>&deg;</div>
+          <div id="dvCurrTemp" class="current_temp"><span>20</span>&deg;</div>
         </div>
       </div>
     
