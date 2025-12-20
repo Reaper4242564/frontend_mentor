@@ -99,15 +99,51 @@ function loadcurrentWeather(weather) {
 
 function loadDailyForecast(weather) {
     let daily = weather.daily;
-
+    
     for (let i = 0; i < 7; i++) {
-        let day = daily.time[i];
-        console.log(day);
+        
+        let date = new Date(daily.time[i]);
+        let dayOfWeek = new Intl.DateTimeFormat("en-US", { weekday: "short"}).format(date);
+        let dvForecastDay = document.querySelector(`#dvForecastDay${i + 1}`);
+        let weatherCodeName = getWeatherCodeName(daily.weather_code[i]);
+        let dailyHigh = Math.round(daily.temperature_2m_max[i]) + `${weather.daily_units.temperature_2m_max}`;
+        let dailyLow = Math.round(daily.temperature_2m_min[i]) + `${weather.daily_units.temperature_2m_min}`;
+
+        addDailyElement("p", "daily_day-titile", dayOfWeek, "", dvForecastDay, "afterbegin");
+        addDailyElement("img", "daily_day-icon", "", weatherCodeName, dvForecastDay, "beforeend");
+        addDailyElement("div", "daily_day-temps", "", "", dvForecastDay, "beforeend");
+
+        let dvDailyTemps = document.querySelector(`#dvForecastDay${i + 1} .daily_day-temps`);
+        addDailyElement("p", "daily_day-high", dailyHigh, "", dvDailyTemps, "afterbegin");
+        addDailyElement("p", "daily_day-low", dailyLow, "", dvDailyTemps, "beforeend");
+        // Alternatively of generating a HTML element from jave script you can hard write the HTML element
+        // let dvForecastDay = document.querySelector(`#dvForecastDay${i + 1}` .daily_day-title);
+        
+
+        // dvForecastDay.textContent = dayOfWeek;
     };
 
 };
 
-function getWeatherFileName(code) {
+function addDailyElement (tag, className, content, weatherCodeName, parentElement, position){
+    const newElement = document.createElement(tag);
+    newElement.setAttribute("class", className);
+    parentElement.insertAdjacentElement(position, newElement);
+    if (content !== "") {
+        const newContent = document.createTextNode(content);
+        newElement.appendChild(newContent);
+    };
+    if (tag === "img") {
+        newElement.setAttribute("src", `./assets/images/icon-${weatherCodeName}.webp`);
+        newElement.setAttribute("alt", weatherCodeName);
+        newElement.setAttribute("width", "320");
+        newElement.setAttribute("height", "320");
+    };
+    
+
+};
+
+function getWeatherCodeName(code) {
 
     const weatherCodes = {
         0: "sunny",
@@ -141,11 +177,12 @@ function getWeatherFileName(code) {
         99: "storm",
     };
 
-    let fileName = `icon-${weatherCodes[code]}.webp`;
+  
 
-    return fileName;
+    return weatherCodes[code];
 };
 
 getGeoData();
+
 
 
