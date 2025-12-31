@@ -83,6 +83,7 @@ async function getWeatherData(lat, lon) {
 
         loadcurrentWeather(result);
         loadDailyForecast(result);
+        loadHourlyForecast(result);
     } catch (error) {
         console.error(error.message);
     };
@@ -143,6 +144,46 @@ function addDailyElement (tag, className, content, weatherCodeName, parentElemen
 
 };
 
+function loadHourlyForecast(weather, dayIndex = 0) {
+    
+
+    // for (let i = 0; i < 7; i++) {
+        console.log(`Day ${dayIndex + 1}`);
+        let firstHour = 24 * dayIndex;
+        let lastHour = 24 * (dayIndex + 1) - 1;
+        let weatherCodes = weather.hourly.weather_code;
+        let temps = weather.hourly.temperature_2m;
+        let hours = weather.hourly.time;
+
+        for (let h = firstHour; h < lastHour + 1; h++) {
+            
+            let weatherCodeName = getWeatherCodeName(weatherCodes[h]);
+            let temp = Math.round(temps[h]);
+            let hour = new Date(hours[h]).toLocaleString("eng-US", { hour: "numeric", hour12: true});
+
+            console.log(h, hour, weatherCodeName, temp);
+
+            let dvForecastHour = document.querySelector(`#dvForecastHour${h + 1}`);
+            
+
+            addDailyElement("img", "hourly_hour-icon", "", weatherCodeName, dvForecastHour, "afterbegin");
+            addDailyElement("p", "hourly_hour-time", hour, "", dvForecastHour, "beforeend");
+            addDailyElement("p", "hourly_hour-temp", temp, "", dvForecastHour, "beforeend");
+
+
+
+        }
+     };
+
+     function getHours() {
+        for (let h = 0; h <= 23; h++) {
+            console.log(h);
+        }
+     }
+
+// };
+
+
 function getWeatherCodeName(code) {
 
     const weatherCodes = {
@@ -181,6 +222,7 @@ function getWeatherCodeName(code) {
 
     return weatherCodes[code];
 };
+
 
 getGeoData();
 
