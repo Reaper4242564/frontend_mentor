@@ -15,6 +15,7 @@ body {
     color: #333;
     background-color: hsl(47, 88%, 63%);
     padding: 20px;
+    padding-bottom: 600px;
 }
 
 /* Utility classes */
@@ -25,7 +26,7 @@ body {
     background-color: hsl(0, 0%, 100%);
     position: relative;
     top: 100px;
-    height: 480px;
+    height: 550px;
     border-radius: 15px;
     box-shadow: 10px 10px hsl(0, 0%, 7%);
     border-style: solid;
@@ -60,7 +61,17 @@ body {
 }
 
 .avatar {
-    display: inline-block;
-    background-color: aqua;
+    display: grid;
+    padding-top: 24px;
+    width: 130px;
+    height: 32px;
+    gap: 12px;
+    grid-template-columns: 32px 1fr;
     align-items: center;
+
+}
+
+.user_name {
+    font-size: 14px;
+    font-weight: 600;
 }
