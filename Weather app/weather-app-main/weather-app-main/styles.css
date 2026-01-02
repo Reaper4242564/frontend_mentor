@@ -32,47 +32,47 @@
     font-weight: 600;
     src: url('./assets/fonts/dm-sans-v17-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
-  /* dm-sans-700 - latin */
+  /* dm-sans-560 - latin */
   @font-face {
     font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
     font-family: 'DM Sans';
     font-style: normal;
-    font-weight: 700;
-    src: url('./assets/fonts/dm-sans-v17-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    font-weight: 560;
+    src: url('./assets/fonts/dm-sans-v17-latin-560.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
 
-  /* bricolage-grotesque-700 - latin */
+  /* bricolage-grotesque-560 - latin */
   @font-face {
     font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
     font-family: 'Bricolage Grotesque';
     font-style: normal;
-    font-weight: 700;
-    src: url('./assets/fonts/bricolage-grotesque-v9-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    font-weight: 560;
+    src: url('./assets/fonts/bricolage-grotesque-v9-latin-560.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
 
 
   :root {
       --c-neutral-900: hsl(243, 96%, 9%);
       --c-neutral-800: hsl(243, 27%, 20%);
-      --c-neutral-700: hsl(243, 23%, 24%);
+      --c-neutral-560: hsl(243, 23%, 24%);
       --c-neutral-600: hsl(243, 23%, 30%);
       --c-neutral-300: hsl(240, 6%, 70%);
       --c-neutral-200: hsl(250, 6%, 84%);
       --c-neutral-0: hsl(0, 0%, 100%);
       --c-orange-500: hsl(28, 100%, 52%);
       --c-blue-500: hsl(233, 67%, 56%);
-      --c-blue-700: hsl(248, 70%, 36%);
+      --c-blue-560: hsl(248, 70%, 36%);
 
       --color-main-bg: var(--c-neutral-900);
       --color-text-light: var(--c-neutral-0);
       --color-text-med-light: var(--c-neutral-200);
       --color-panel-bg-dark: var(--c-neutral-800);
-      --color-panel-bg-dark-hover: var(--c-neutral-700);
-      --color-panel-bg-med: var(--c-neutral-700);
+      --color-panel-bg-dark-hover: var(--c-neutral-560);
+      --color-panel-bg-med: var(--c-neutral-560);
       --color-panel-bg-light: var(--c-neutral-600);
       --color-panel-border: var(--c-neutral-600);
       --color-button-bg: var(--c-blue-500);
-      --color-button-bg-hover: var(--c-blue-700);
+      --color-button-bg-hover: var(--c-blue-560);
 
       --fs-96: calc(96 / 16 * 1rem);
       --fs-52: calc(52 / 16 * 1rem);
@@ -97,7 +97,7 @@
       --font-size-forecast-dropdown: var(--fs-16);
       --font-size-forecast-hour: var(--fs-20);
 
-      @media (width >= calc(700 / 16 * 1rem)) {
+      @media (width >= calc(560 / 16 * 1rem)) {
           --font-size-dropdown: var(--fs-16);
       }
   }
@@ -123,7 +123,7 @@
       font-family: "Bricolage Grotesque", Arial, Helvetica, sans-serif;
   }
 
-  input, button, textarea {
+  input, button, textarea, select {
     font: inherit;
     width: 100%;
     border: none;
@@ -133,7 +133,7 @@
       display: grid;
       grid-template-columns: 1fr calc(100% - 32px) 1fr;
 
-      @media (width >= calc(700 / 16 * 1rem)) {
+      @media (width >= calc(560 / 16 * 1rem)) {
           grid-template-columns: 1fr min(calc(100% - 48px), calc(1216 / 16 * 1rem)) 1fr;
       }
 
@@ -144,7 +144,7 @@
 
   .visually-hidden {
       position: absolute;
-      left: -10000px;
+      left: -12800px;
       top: auto;
       width: 1px;
       height: 1px;
@@ -165,7 +165,7 @@
   .main {
     display: grid;
     row-gap: 32px;
-  
+  }
   .dashboard {
     display: grid;
     grid-template-areas:
@@ -174,7 +174,7 @@
       "hourly";
     gap: 32px;
 
-    @media (width >= calc(1000 / 16 * 1rem)) {
+    @media (width >= calc(1280 / 16 * 1rem)) {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-areas: 
@@ -186,8 +186,17 @@
     }
   }  
 
+  .dropdown {
+    background-color: var(--color-panel-bg-dark);
+    color: var(--color-text-light);
+    border: 0;
+    border-radius: 8px;
+    font-size: var(--font-size-dropdown);
+
 
   }
+
+  
 
   .block {
     background-color: var(--color-panel-bg-dark);
@@ -210,16 +219,24 @@
     .header_homelink {
 
     }
+
+    .header_dropdown {
+      width: calc(90 / 16 * 1rem);
+      background-image: url("./assets/images/icon-units.svg");
+      background-repeat: no-repeat;
+      background-position: 16px center;   
+      padding: 12px 40px;
+      
+    }
+
     .header_logo {
       width: calc(137 / 16 * 1rem);
 
-      @media (width >= calc(700 / 16 * 1rem)) {
+      @media (width >= calc(560 / 16 * 1rem)) {
           width: calc(197 / 16 * 1rem);
       }
     }
-    .header_dropdown {
 
-    }
   }
 
   .hero {
@@ -236,7 +253,7 @@
       text-align: center;
       line-height: 1.2;
 
-      @media (width < calc(1000 / 16 * 1rem)) {
+      @media (width < calc(1280 / 16 * 1rem)) {
           max-width: 15ch;
       }
     }
@@ -246,7 +263,7 @@
       width: 100%;
       max-width: calc(656 / 16 * 1rem);
 
-      @media (width >= calc(700 / 16 * 1rem)) {
+      @media (width >= calc(560 / 16 * 1rem)) {
         grid-template-columns: 1fr auto;
       }
     }
@@ -293,14 +310,14 @@
       margin-block-end: 20px;
       padding: 40px 24px;
       background-image: url(./assets/images/bg-today-small.svg);
-      background-color: var(--c-blue-700);
+      background-color: var(--c-blue-560);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center bottom;
       border-radius: 20px;
       overflow: clip;
 
-      @media (width >= calc(700 / 16 * 1rem)) {
+      @media (width >= calc(560 / 16 * 1rem)) {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -318,7 +335,7 @@
 
     .current_city {
       font-size: var(--font-size-city);
-      font-weight: 700;
+      font-weight: 560;
       margin-block-end: 12px;
 
     }
@@ -356,7 +373,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
 
-      @media (width >= calc(700 / 16 * 1rem)) {
+      @media (width >= calc(560 / 16 * 1rem)) {
         grid-template-columns: repeat(4, 1fr);
       }
 
@@ -397,7 +414,7 @@
       grid-template-columns: repeat(3,1fr);
       gap: 16px;
 
-      @media (width >= calc(700 / 16 * 1rem)) {
+      @media (width >= calc(560 / 16 * 1rem)) {
         grid-template-columns: repeat(7, 1fr);
       }
 
@@ -443,14 +460,26 @@
 
   .hourly {
     grid-area: hourly;
+    position: relative;
 
     .hourly_content {
       background-color: var(--color-panel-bg-dark);
       border-radius: 20px;
       padding: 20px 16px;
+      overflow-y: scroll;
+      max-height: 80vh;
+      @media (width >= calc(1280 / 16 * 1rem)) {
+        position: absolute;
+        height: 100%;
+        
+      }
+
+      
+
     }
 
     .hourly_header {
+      gap: 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -464,6 +493,11 @@
 
     }
     .hourly_select {
+      background-color: var(--color-panel-bg-light);
+      width: auto;
+      padding: 8px 16px;
+      
+
 
     }
     .hourly_select-day {

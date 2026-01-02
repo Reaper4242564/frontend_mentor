@@ -1,4 +1,7 @@
 const ddlUnits = document.querySelector("#ddlUnits");
+const ddlDay = document.querySelector("#ddlDay");
+const btnSearch = document.querySelector("#btnSearch");
+const textSearch = document.querySelector("#textSearch")
 const dvCityCountry = document.querySelector("#dvCityCountry");
 const dvCurrDate = document.querySelector("#dvCurrDate");
 const dvCurrTemp = document.querySelector("#dvCurrTemp");
@@ -8,10 +11,10 @@ const pWind = document.querySelector("#pWind");
 const pPrecipitation = document.querySelector("#pPrecipitation");
 
 
-let cityName, countryName;
+let cityName, countryName, weatherData;
 
 async function getGeoData(city) {
-    let search = "lusaka, zambia"
+    let search = textSearch.value;
     const url = `https://nominatim.openstreetmap.org/search?q=${search}&format=jsonv2&addressdetails=1`;
     try {
         const response = await fetch(url);
@@ -78,28 +81,29 @@ async function getWeatherData(lat, lon) {
             throw new Error(`Response status: ${Response.status}`)
         };
 
-        const result = await response.json();
-        console.log(result);
+         weatherData = await response.json();
+        console.log(weatherData);
 
-        loadcurrentWeather(result);
-        loadDailyForecast(result);
-        loadHourlyForecast(result);
+        loadcurrentWeather(weatherData);
+        loadDailyForecast(weatherData);
+        loadHourlyForecast(weatherData);
+        
     } catch (error) {
         console.error(error.message);
     };
 
 };
 
-function loadcurrentWeather(weather) {
-    dvCurrTemp.textContent = `${Math.round(weather.current.temperature_2m)}${weather.current_units.temperature_2m}`;
-    pFeelsLike.textContent = `${Math.round(weather.current.apparent_temperature)}${weather.current_units.apparent_temperature}`;
-    pHumidity.textContent = weather.current.relative_humidity_2m;
-    pWind.textContent = `${Math.round(weather.current.wind_speed_10m)} ${weather.current_units.wind_speed_10m}`;
-    pPrecipitation.textContent = `${weather.current.precipitation} ${weather.current_units.precipitation}`;
+function loadcurrentWeather() {
+    dvCurrTemp.textContent = `${Math.round(weatherData.current.temperature_2m)}${weatherData.current_units.temperature_2m}`;
+    pFeelsLike.textContent = `${Math.round(weatherData.current.apparent_temperature)}${weatherData.current_units.apparent_temperature}`;
+    pHumidity.textContent = weatherData.current.relative_humidity_2m;
+    pWind.textContent = `${Math.round(weatherData.current.wind_speed_10m)} ${weatherData.current_units.wind_speed_10m}`;
+    pPrecipitation.textContent = `${weatherData.current.precipitation} ${weatherData.current_units.precipitation}`;
 };
 
-function loadDailyForecast(weather) {
-    let daily = weather.daily;
+function loadDailyForecast() {
+    let daily = weatherData.daily;
     
     for (let i = 0; i < 7; i++) {
         
@@ -107,8 +111,12 @@ function loadDailyForecast(weather) {
         let dayOfWeek = new Intl.DateTimeFormat("en-US", { weekday: "short"}).format(date);
         let dvForecastDay = document.querySelector(`#dvForecastDay${i + 1}`);
         let weatherCodeName = getWeatherCodeName(daily.weather_code[i]);
-        let dailyHigh = Math.round(daily.temperature_2m_max[i]) + `${weather.daily_units.temperature_2m_max}`;
-        let dailyLow = Math.round(daily.temperature_2m_min[i]) + `${weather.daily_units.temperature_2m_min}`;
+        let dailyHigh = Math.round(daily.temperature_2m_max[i]) + `${weatherData.daily_units.temperature_2m_max}`;
+        let dailyLow = Math.round(daily.temperature_2m_min[i]) + `${weatherData.daily_units.temperature_2m_min}`;
+
+        while (dvForecastDay.firstChild) {
+            dvForecastDay.removeChild(dvForecastDay.firstChild);
+        };
 
         addDailyElement("p", "daily_day-titile", dayOfWeek, "", dvForecastDay, "afterbegin");
         addDailyElement("img", "daily_day-icon", "", weatherCodeName, dvForecastDay, "beforeend");
@@ -144,51 +152,51 @@ function addDailyElement (tag, className, content, weatherCodeName, parentElemen
 
 };
 
-function loadHourlyForecast(weather, dayIndex = 0) {
+function loadHourlyForecast() {
     
+    dayIndex = parseInt(ddlDay.value, 10);
 
-    // for (let i = 0; i < 7; i++) {
-        console.log(`Day ${dayIndex + 1}`);
-        let firstHour = 24 * dayIndex;
-        let lastHour = 24 * (dayIndex + 1) - 1;
-        let weatherCodes = weather.hourly.weather_code;
-        let temps = weather.hourly.temperature_2m;
-        let hours = weather.hourly.time;
+    console.log(`Day ${dayIndex + 1}`);
+    let firstHour = 24 * dayIndex;
+    let lastHour = 24 * (dayIndex + 1) - 1;
+    let weatherCodes = weatherData.hourly.weather_code;
+    let temps = weatherData.hourly.temperature_2m;
+    let hours = weatherData.hourly.time;
+    let id = 1;
 
-        for (let h = firstHour; h < lastHour + 1; h++) {
-            
-            let weatherCodeName = getWeatherCodeName(weatherCodes[h]);
-            let temp = Math.round(temps[h]);
-            let hour = new Date(hours[h]).toLocaleString("eng-US", { hour: "numeric", hour12: true});
+    for (let h = firstHour; h <= lastHour; h++) {
+        
+        let weatherCodeName = getWeatherCodeName(weatherCodes[h]);
+        let temp = Math.round(temps[h]) + `${weatherData.hourly_units.temperature_2m}`;
+        let hour = new Date(hours[h]).toLocaleString("eng-US", { hour: "numeric", hour12: true});
+        let dvForecastHour = document.querySelector(`#dvForecastHour${id}`);
+        console.log(h, hour, weatherCodeName, temp);
 
-            console.log(h, hour, weatherCodeName, temp);
+        while (dvForecastHour.firstChild) {
+            dvForecastHour.removeChild(dvForecastHour.firstChild);
+        };
+        
 
-            let dvForecastHour = document.querySelector(`#dvForecastHour${h + 1}`);
-            
+        addDailyElement("img", "hourly_hour-icon", "", weatherCodeName, dvForecastHour, "afterbegin");
+        addDailyElement("p", "hourly_hour-time", hour, "", dvForecastHour, "beforeend");
+        addDailyElement("p", "hourly_hour-temp", temp, "", dvForecastHour, "beforeend");
+        
+        id++;
+    }
+};
 
-            addDailyElement("img", "hourly_hour-icon", "", weatherCodeName, dvForecastHour, "afterbegin");
-            addDailyElement("p", "hourly_hour-time", hour, "", dvForecastHour, "beforeend");
-            addDailyElement("p", "hourly_hour-temp", temp, "", dvForecastHour, "beforeend");
-
-
-
-        }
-     };
-
-     function getHours() {
-        for (let h = 0; h <= 23; h++) {
-            console.log(h);
-        }
-     }
-
-// };
+function getHours() {
+for (let h = 0; h <= 23; h++) {
+    console.log(h);
+}
+}
 
 
 function getWeatherCodeName(code) {
 
     const weatherCodes = {
         0: "sunny",
-        1: "party-cloudly",
+        1: "partly-cloudy",
         2: "partly-cloudy",
         3: "overcast",
         45: "fog",
@@ -223,8 +231,32 @@ function getWeatherCodeName(code) {
     return weatherCodes[code];
 };
 
+function populateDayOfWeek() {
+    let currDate = new Date();
+    let currDay;
 
+    for ( i = 0; i < 7; i++) {
+        currDay = new Intl.DateTimeFormat("en-US", {weekday: "long"}).format(currDate);
+        const newOption = document.createElement("option");
+        const dayOfWeek = document.createTextNode(currDay);
+
+        newOption.setAttribute("class", "houly_select-day");
+        newOption.setAttribute("value", i);
+        newOption.appendChild(dayOfWeek);
+
+        ddlDay.insertAdjacentElement("beforeend", newOption);
+
+        currDate.setDate(currDate.getDate() + 1);
+    }
+}
+
+
+
+populateDayOfWeek();
 getGeoData();
 
+btnSearch.addEventListener("click", getGeoData);
+ddlUnits.addEventListener("change", getGeoData);
+ddlDay.addEventListener("change", loadHourlyForecast);
 
 
