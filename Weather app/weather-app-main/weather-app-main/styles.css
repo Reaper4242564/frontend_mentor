@@ -216,10 +216,6 @@
       padding-block-start: 16px;
     }
 
-    .header_homelink {
-
-    }
-
     .header_dropdown {
       width: calc(90 / 16 * 1rem);
       background-image: url("./assets/images/icon-units.svg");
@@ -500,9 +496,7 @@
 
 
     }
-    .hourly_select-day {
 
-    }
     .hourly_hours {
       display: grid;
       gap: 16px;
